@@ -4,4 +4,5 @@ __pycache__
 /backend/myenv
 /backend/db.sqlite3
 /backend/static
+/backend/datos.json
 .DS_Store

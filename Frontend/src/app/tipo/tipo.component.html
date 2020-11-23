@@ -1,0 +1,23 @@
+<h1>Nuevo tipo de animales</h1>
+<br><br>
+<form #formularioTipo="ngForm" (ngSubmit)="nuevoTipo()">
+	<input type="text" name="nombre" placeholder="Nombre del tipo" [(ngModel)]="tipo.nombre">
+	<br><br>
+	<button type="submit">Guardar</button>
+</form>
+
+<h1>Tipos de animales</h1>
+
+<table
+  class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"
+  *ngIf="tipos"
+>
+  <tr>
+    <th class="mdl-data-table__cell--non-numeric">Nombre </th>
+  </tr>
+  <tr *ngFor="let tipo of tiposs">
+    <td class="mdl-data-table__cell--non-numeric">
+      {{tipo.nombre}}
+    </td>
+  </tr>
+</table>

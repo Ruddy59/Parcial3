@@ -29,7 +29,6 @@ class Query(graphene.ObjectType):
 
         if id is not None:
             return Tipo.objects.get(pk=id)
-
         return None
 
     def resolve_animal(self, info, **kwargs):

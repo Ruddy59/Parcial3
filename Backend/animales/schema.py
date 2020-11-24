@@ -83,11 +83,12 @@ class CreateAnimal(graphene.Mutation):
     @staticmethod
     def mutate(root, info, input=None):
         ok = True
+        tipo_obj = Tipo.objects.get(id=input.tipo)
         animal_instance = Animal(
           nombre=input.nombre,
           entorno=input.entorno,
           peso=input.peso,
-          tipo=input.tipo
+          tipo= tipo_obj,
           )
         animal_instance.save()
         return CreateAnimal(ok=ok, animal=animal_instance)

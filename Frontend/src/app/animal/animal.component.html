@@ -1,1 +1,51 @@
-<p>animal works!</p>
+<h1>Animales</h1>
+
+<table
+  class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"
+  *ngIf="animales"
+>
+  <tr>
+    <th class="mdl-data-table__cell--non-numeric">Nombre </th>
+    <th class="mdl-data-table__cell--non-numeric">Entorno </th>
+    <th class="mdl-data-table__cell--non-numeric">Peso en libras </th>
+    <th class="mdl-data-table__cell--non-numeric">Tipo </th>
+  </tr>
+  <tr *ngFor="let animal of animales">
+    <td class="mdl-data-table__cell--non-numeric">
+      {{animal.nombre}}
+    </td>
+    <td class="mdl-data-table__cell--non-numeric">
+        {{animal.entorno}}
+    </td>
+    <td class="mdl-data-table__cell--non-numeric">
+        {{animal.peso}}
+    </td>
+    <td class="mdl-data-table__cell--non-numeric">
+        {{animal.tipo.nombre}}
+    </td>
+  </tr>
+</table>
+
+<h1>Nuevo tipo de animales</h1>
+<br><br>
+<form #formularioAnimal="ngForm" (ngSubmit)="nuevoAnimal()">
+  <div>  
+    <label class="mdl-textfield__label" for="nombre">Nombre: </label>
+    <input class="mdl-textfield__input" type="text" name="nombre" placeholder="Nombre de animal" [(ngModel)]="animal.nombre">
+    <br>
+    <label class="mdl-textfield__label" for="entorno">Entorno: </label>
+    <input class="mdl-textfield__input" type="text" name="entorno" placeholder="Entorno" [(ngModel)]="animal.entorno">
+    <br>
+    <label class="mdl-textfield__label" for="peso">Peso en libras: </label>
+    <input class="mdl-textfield__input" name="peso" type="number" step="any" placeholder="Peso en libras" [(ngModel)]="animal.peso">
+    <br>
+    <label class="mdl-textfield__label" for="tipo">Tipo de animal: </label>
+    <select class="mdl-selectfield__select" name="tipo" [(ngModel)]="animal.tipo">
+        <option value="" disabled selected>Seleccione el tipo</option>
+        <option *ngFor="let tipo of tipos" [value]= tipo.id>{{tipo.nombre}}</option>
+    </select>
+  </div>
+    <br><br>
+	<button class="mdl-button" type="submit">Guardar</button>
+</form>
+
